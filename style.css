@@ -1,0 +1,426 @@
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  transition: 300ms;
+  color: #000;
+}
+
+a:hover {
+  color: #ff4444;
+}
+
+header {
+  padding-top: 5.55em;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto; 
+  padding: 2em;
+}
+
+.navbar {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+}
+
+.navbar .menu {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.links a {
+  margin: 0 0.5em;
+  font-size: 1.1em;
+}
+
+.brand, .brand-mobile {
+  justify-self: center;
+  font-weight: bold;
+  font-size: 1.3em;
+}
+
+.brand-mobile {
+  display: none;
+}
+
+.social {
+  justify-self: right;
+}
+
+.social a {
+  font-size: 1.3em;
+  margin: 0 0.4em;
+}
+
+.nav-btn {
+  display: none;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  height: calc(100vh - 9.55em);
+}
+
+.hero img {
+  width: 80%;
+  height: 80%;
+}
+
+.hero h1 {
+  font-weight: 400;
+  font-size: 3.3em;
+}
+
+.hero h1 span {
+  font-weight: bold;
+  position: relative;
+}
+
+.hero h1 span::before {
+  content: "";
+  position: absolute;
+  bottom: 11px;
+  right: -20px;
+  background-color: #ff4444;
+  width: 0.3em;
+  height: 0.3em;
+  border-radius: 50%;
+}
+
+.hero p {
+  margin: 2em 0;
+  line-height: 30px;
+  color: #5d5d5d;
+}
+
+.video-btn {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2em;
+}
+
+.video-btn button {
+  position: relative;
+  background-color: #ff4444;
+  border: none;
+  border-radius: 50%;
+  width: 4em;
+  height: 4em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: 300ms;
+}
+
+.video-btn button:hover {
+  background-color: #e33c3c;
+}
+
+.video-btn i {
+  font-size: 1.5em;
+  color: #fff;
+}
+
+.video-btn span {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.video-btn button::before,
+.video-btn button::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  z-index: -1;
+}
+
+.video-btn button::before {
+  background-color: #ff6565;
+  animation: pulse1 1.5s ease-out forwards infinite;
+}
+
+.video-btn button::after {
+  background-color: #ff6565;
+  animation: pulse2 1.5s ease-out forwards infinite;
+}
+
+.modal {
+  margin: auto;
+  width: 80%;
+  max-width: 1100px;
+  height: 90vh;
+  min-height: 10em;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 0 2em rgba(0, 0, 0, .2);
+  overflow: hidden;
+  background-color: transparent;
+}
+
+.modal video {
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+}
+
+.modal::backdrop {
+  background-color: rgba(0, 0, 0, .8);
+}
+
+@media screen and (max-width: 880px) {
+  .navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .navbar .menu, .links {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+  }
+  .links {
+    margin-bottom: 2em;
+  }
+  .navbar .menu {
+    position: absolute;
+    top: -18.5em; left: 0;
+    width: 100%;
+    height: 18em;
+    background-color: #fff;
+    box-shadow: 0 20px 35px rgba(86, 86, 86, 0.1);
+    transition: 800ms ease-in-out;
+  }
+  .nav-btn, .brand-mobile {
+    display: block;
+  }
+  .nav-btn {
+    background-color: transparent;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+  }
+  .brand {
+    display: none;
+  }
+  .hero {
+    grid-template-columns: 1fr;
+    height: initial;
+  }
+  .profile-img {
+    text-align: center;
+    margin-bottom: 2em;
+  }
+  .hero img {
+    width: 90%;
+    max-width: 400px;
+  }
+  /*Dynamic class used later in Javascript*/
+  .navbar .menu-open {
+    top: 5.5em;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  html {
+    font-size: 14px;
+  }
+  .hero h1 {
+    font-size: 2.8em;
+  }
+}
+
+@keyframes pulse1 {
+  40% {
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+  }
+  100% {
+    width: 160%;
+    height: 160%;
+    opacity: 0;
+  }
+}
+
+@keyframes pulse2 {
+  20% {
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+  }
+  100% {
+    width: 190%;
+    height: 190%;
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  100% {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+}
+
+<!-- About Me -->
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f7f7f7;
+  color: #333;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2em;
+}
+
+header {
+  padding-top: 5.55em;
+  min-height: 100vh;
+  background-color: #fff;
+}
+
+.navbar {
+  background: transparent;
+  padding: 0.5em 0;
+}
+
+.menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.links a, .social a {
+  font-size: 1em;
+  margin: 0 1em;
+  color: #333;
+}
+
+.brand {
+  font-size: 2em;
+  font-weight: bold;
+  color: #ff4444;
+}
+
+.about-me, .education, .experience {
+  background-color: #fff;
+  padding: 4em 0;
+  margin-top: -6em;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.about-me h2, .education h2, .experience h2 {
+  font-size: 2.5em;
+  color: #ff4444;
+  margin-bottom: 0.5em;
+}
+
+.about-me p, .education ul, .experience p {
+  font-size: 1em;
+  line-height: 1.6;
+  color: #666;
+}
+
+.education ul {
+  list-style: none;
+}
+
+.education li h3 {
+  font-size: 1.5em;
+  margin-bottom: 0.25em;
+}
+
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1em;
+  }
+
+  header {
+    padding-top: 3em;
+  }
+
+  .about-me, .education, .experience {
+    padding: 2em 0;
+    margin-top: -4em;
+  }
+
+  .about-me h2, .education h2, .experience h2 {
+    font-size: 2em;
+  }
+}
+
+@media (max-width: 480px) {
+  .links a, .social a {
+    margin: 0 0.5em;
+  }
+
+  .brand {
+    font-size: 1.5em;
+  }
+
+  .about-me h2, .education h2, .experience h2 {
+    font-size: 1.5em;
+  }
+}
+
+.resume-button {
+  display: inline-block;
+  width: 150px;
+  height: 150px;
+  background-color: #ff4444;
+  color: white;
+  text-align: center;
+  line-height: 150px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+
+.resume-button:hover {
+  background-color: #cc3838;
+}
+
+img {
+  width: 50px;
+  height: 50px;
+}
